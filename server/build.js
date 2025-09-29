@@ -1,21 +1,32 @@
 const { execSync } = require('child_process')
 const fs = require('fs')
-const path = require('path')
 
-console.log('Starting LEHER build process...')
+console.log('🚀 Starting LEHER production build...')
 
 try {
-  // Create logs directory
+  // Create logs directory if it doesn't exist
   if (!fs.existsSync('./logs')) {
     fs.mkdirSync('./logs', { recursive: true })
+    console.log('✅ Created logs directory')
   }
 
-  // Build TypeScript
-  console.log('Building TypeScript...')
-  execSync('npx tsc --project tsconfig.prod.json', { stdio: 'inherit' })
+  // Remove existing dist folder
+  if (fs.existsSync('./dist')) {
+    fs.rmSync('./dist', { recursive: true })
+    console.log('✅ Cleaned dist folder')
+  }
 
-  console.log('✅ Build successful!')
+  // Build TypeScript with error handling
+  console.log('📦 Compiling TypeScript...')
+  execSync('npx tsc', { 
+    stdio: 'inherit',
+    cwd: process.cwd()
+  })
+
+  console.log('🎉 Build completed successfully!')
+  process.exit(0)
 } catch (error) {
-  console.error('❌ Build failed:', error.message)
+  console.error('💥 Build failed:', error.message)
+  console.error('Checking if dist folder exists:', fs.existsSync('./dist'))
   process.exit(1)
 }

@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node --max-old-space-size=512 dist/index.js",
     "dev": "nodemon --max-old-space-size=4096 --expose-gc",
-    "build": "node build.js",
+    "build": "npx tsc",
+    "build:custom": "node build.js",
     "build:prod": "npm install && npm run build",
     "postinstall": "npm run build",
-    "render-build": "npm ci --production=false && npm ci --only=production && npm run build && mkdir -p logs",
+    "render-build": "npm install && npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
