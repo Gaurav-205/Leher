@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator'
-import { User } from '@models/User'
-import { AppError } from '@middleware/errorHandler'
-import logger from '@utils/logger'
-import { generateToken, generateResetToken, generateVerificationToken, verifyToken } from '@utils/jwt'
+import { User } from '../models/User'
+import { AppError } from '../middleware/errorHandler'
+import logger from '../utils/logger'
+import { generateToken, generateResetToken, generateVerificationToken, verifyToken } from '../utils/jwt'
 
 // @desc    Register user
 // @route   POST /api/auth/register

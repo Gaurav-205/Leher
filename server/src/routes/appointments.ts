@@ -1,6 +1,6 @@
 import express from 'express'
 import { body, param, query } from 'express-validator'
-import { protect, authorize } from '@middleware/auth'
+import { protect, authorize } from '../middleware/auth'
 import {
   getAppointments,
   getAppointment,
@@ -9,7 +9,7 @@ import {
   cancelAppointment,
   getAvailableCounselors,
   getCounselorAvailability
-} from '@controllers/appointmentController'
+} from '../controllers/appointmentController'
 
 const router = express.Router()
 

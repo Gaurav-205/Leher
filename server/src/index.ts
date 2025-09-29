@@ -12,20 +12,20 @@ import 'express-async-errors'
 // Load environment variables
 dotenv.config()
 
-import { connectDB } from '@config/database'
-import { errorHandler } from '@middleware/errorHandler'
-import { notFound } from '@middleware/notFound'
-import logger from '@utils/logger'
+import { connectDB } from './config/database'
+import { errorHandler } from './middleware/errorHandler'
+import { notFound } from './middleware/notFound'
+import logger from './utils/logger'
 
 // Import routes
-import authRoutes from '@routes/auth'
-import userRoutes from '@routes/users'
-import chatbotRoutes from '@routes/chatbot'
-import communityRoutes from '@routes/community'
-import resourceRoutes from '@routes/resources'
-import adminRoutes from '@routes/admin'
-import institutionRoutes from '@routes/institutions'
-import appointmentRoutes from '@routes/appointments'
+import authRoutes from './routes/auth'
+import userRoutes from './routes/users'
+import chatbotRoutes from './routes/chatbot'
+import communityRoutes from './routes/community'
+import resourceRoutes from './routes/resources'
+import adminRoutes from './routes/admin'
+import institutionRoutes from './routes/institutions'
+import appointmentRoutes from './routes/appointments'
 
 const app = express()
 const server = createServer(app)

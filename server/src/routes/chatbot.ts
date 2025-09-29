@@ -1,6 +1,6 @@
 import express from 'express'
 import { body } from 'express-validator'
-import { protect } from '@middleware/auth'
+import { protect } from '../middleware/auth'
 import {
   sendMessage,
   getChatHistory,
@@ -8,7 +8,7 @@ import {
   endChatSession,
   getWellnessTips,
   trackMood
-} from '@controllers/chatbotController'
+} from '../controllers/chatbotController'
 
 const router = express.Router()
 

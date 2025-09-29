@@ -1,6 +1,6 @@
 import express from 'express'
 import { body } from 'express-validator'
-import { protect } from '@middleware/auth'
+import { protect } from '../middleware/auth'
 import {
   getCommunityPosts,
   getCommunityPost,
@@ -18,7 +18,7 @@ import {
   toggleCommentDislike,
   reportComment,
   getCommentReplies
-} from '@controllers/communityController'
+} from '../controllers/communityController'
 
 const router = express.Router()
 
