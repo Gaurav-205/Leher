@@ -4,9 +4,11 @@
   "description": "Backend API for Leher - Mental Health Support Platform",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node --max-old-space-size=4096 --expose-gc dist/index.js",
+    "start": "node --max-old-space-size=512 dist/index.js",
     "dev": "nodemon --max-old-space-size=4096 --expose-gc",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.prod.json",
+    "build:prod": "npm install && npm run build",
+    "postinstall": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
