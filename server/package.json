@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node --max-old-space-size=512 dist/index.js",
     "dev": "nodemon --max-old-space-size=4096 --expose-gc",
-    "build": "tsc && npx tsc-alias",
+    "build": "tsc -p tsconfig.prod.json",
     "build:prod": "npm install && npm run build",
+    "postinstall": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -64,7 +65,6 @@
     "@types/nodemailer": "^6.4.14",
     "@types/supertest": "^2.0.16",
     "@types/uuid": "^9.0.8",
-    "tsc-alias": "^1.8.8",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.55.0",

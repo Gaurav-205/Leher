@@ -1,36 +1,11 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["ES2020"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": false,
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "declaration": false,
-    "sourceMap": false,
-    "removeComments": true,
     "noEmitOnError": false,
-    "allowJs": false,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@controllers/*": ["src/controllers/*"],
-      "@models/*": ["src/models/*"],
-      "@routes/*": ["src/routes/*"],
-      "@middleware/*": ["src/middleware/*"],
-      "@utils/*": ["src/utils/*"],
-      "@types/*": ["src/types/*"],
-      "@services/*": ["src/services/*"],
-      "@config/*": ["src/config/*"]
-    }
+    "incremental": false,
+    "sourceMap": false,
+    "declaration": false
   },
   "include": [
     "src/**/*"
@@ -38,8 +13,6 @@
   "exclude": [
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
-    "test/**/*",
-    "dist/**/*",
-    "node_modules/**/*"
+    "test/**/*"
   ]
 }
