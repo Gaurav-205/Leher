@@ -31,8 +31,9 @@ const app = express()
 const server = createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-    methods: ['GET', 'POST']
+    origin: [process.env.CORS_ORIGIN || 'https://leherr.netlify.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 })
 
@@ -57,8 +58,15 @@ app.use(helmet({
   crossOriginEmbedderPolicy: false
 }))
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  credentials: true
+  origin: [
+    process.env.CORS_ORIGIN || 'https://leherr.netlify.app',
+    'http://localhost:3000',
+    'https://localhost:3000'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  optionsSuccessStatus: 200
 }))
 
 // Rate limiting - more lenient for development
@@ -158,10 +166,10 @@ io.on('connection', (socket) => {
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 5000
+const PORT = parseInt(process.env.PORT || '5000')
 const HOST = process.env.HOST || 'localhost'
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   logger.info(`Server running on http://${HOST}:${PORT}`)
   logger.info(`Environment: ${process.env.NODE_ENV}`)
 })
